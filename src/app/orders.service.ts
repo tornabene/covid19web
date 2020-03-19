@@ -10,8 +10,7 @@ export class OrdersService {
   
   public form = new FormGroup({
     nome: new FormControl("",Validators.required),
-    citta: new FormControl(""),
-    via: new FormControl("" ),
+    
     
     fattoTampone: new FormControl(false) ,
     tamponePositivo: new FormControl(false) ,

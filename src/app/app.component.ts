@@ -148,23 +148,27 @@ export class AppComponent implements OnInit {
       
       
       onSubmit() {
-        this.ordersService.form.value.sintomi = this.sintomi;
+        let data = this.ordersService.form.value;
+
+       data.sintomi = this.sintomi;
         if(this.lat){
-          this.ordersService.form.value.deviceLat = this.lat;
+          data.deviceLat = this.lat;
         }
         if(this.lng){
-          this.ordersService.form.value.deviceLng = this.lng;
+          data.deviceLng = this.lng;
         }
         if(this.stateCtrl.value!=null ){ 
-          this.ordersService.form.value.via = this.stateCtrl.value.place_name;
-          this.ordersService.form.value.viaLng = this.stateCtrl.value.geometry.coordinates[0];
-          this.ordersService.form.value.viaLat = this.stateCtrl.value.geometry.coordinates[1];
+          data.via = this.stateCtrl.value.place_name;
+          data.viaLng = this.stateCtrl.value.geometry.coordinates[0];
+          data.viaLat = this.stateCtrl.value.geometry.coordinates[1];
         }
-        let data = this.ordersService.form.value;
+        
+        data.dataCreazione = new Date();
+        
         this.successSwal.fire();
         this.inviata =true;
         this.ordersService.createCoffeeOrder(data).then(res => {
-          console.log('response');
+         
         });
       }
       
