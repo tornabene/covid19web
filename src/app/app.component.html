@@ -319,11 +319,6 @@
         <mat-label>Nome Cittadino:</mat-label>
         <input matInput required placeholder="Nome Cittadino" formControlName="nome">
       </mat-form-field>
-      <mat-form-field fxFlex>
-        <mat-label>Nome Cittadino:</mat-label>
-        <input matInput required placeholder="Nome Cittadino" formControlName="nome">
-      </mat-form-field>
-
 
 
       <mat-form-field fxFlex>
@@ -353,10 +348,10 @@
 
       
       <mat-form-field fxFlex >
-        <mat-label>Dove sei:  </mat-label>
+        <mat-label>Dove ti trovi:  </mat-label>
         <input matInput
-        placeholder="Dove sei"
-        aria-label="Dove sei"
+        placeholder="Ex. Via N, Comune"
+        aria-label="Ex. Via N, Comune"
         [matAutocomplete]="auto"
         [formControl]="this.stateCtrl"  >
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
