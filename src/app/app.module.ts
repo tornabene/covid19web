@@ -18,7 +18,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { HttpClientModule } from "@angular/common/http";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ServiceWorkerModule } from '@angular/service-worker';
-
+import {MatRadioModule} from '@angular/material/radio';
+ 
 @NgModule({
   declarations: [
     AppComponent
@@ -35,6 +36,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     MatCheckboxModule,
     MatButtonModule, 
     MatAutocompleteModule,
+    MatRadioModule,
     HttpClientModule,
     SweetAlert2Module.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }) 

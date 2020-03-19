@@ -10,6 +10,9 @@ export class OrdersService {
   
   public form = new FormGroup({
     nome: new FormControl("",Validators.required),
+    email: new FormControl("",Validators.required),
+    sesso: new FormControl("",Validators.required),
+    eta: new FormControl("",Validators.required),
     
     
     fattoTampone: new FormControl(false) ,
