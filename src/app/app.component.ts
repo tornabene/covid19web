@@ -149,18 +149,17 @@ export class AppComponent implements OnInit {
       
       onSubmit() {
         this.ordersService.form.value.sintomi = this.sintomi;
-        this.ordersService.form.value.lat = this.lat;
-        this.ordersService.form.value.lng = this.lng;
-
-        this.ordersService.form.value.via = this.stateCtrl.value.place_name;
-        this.ordersService.form.value.point = this.stateCtrl.value.geometry;
-        
-        console.log( this.ordersService.form.value.point )
-        // if(this.point !=null){ 
-        //   this.ordersService.form.value.via = this.point.place_name;
-        //   this.ordersService.form.value.point = this.point.geometry;
-        // }
-
+        if(this.lat){
+          this.ordersService.form.value.deviceLat = this.lat;
+        }
+        if(this.lng){
+          this.ordersService.form.value.deviceLng = this.lng;
+        }
+        if(this.stateCtrl.value!=null ){ 
+          this.ordersService.form.value.via = this.stateCtrl.value.place_name;
+          this.ordersService.form.value.viaLng = this.stateCtrl.value.geometry.coordinates[0];
+          this.ordersService.form.value.viaLat = this.stateCtrl.value.geometry.coordinates[1];
+        }
         let data = this.ordersService.form.value;
         this.successSwal.fire();
         this.inviata =true;
