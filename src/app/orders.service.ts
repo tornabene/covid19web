@@ -8,21 +8,7 @@ import { AngularFirestore } from "@angular/fire/firestore";
 export class OrdersService {
   constructor(private firestore: AngularFirestore) {}
   
-  public form = new FormGroup({
-    nome: new FormControl("",Validators.required),
-    email: new FormControl("",Validators.required),
-    sesso: new FormControl("",Validators.required),
-    eta: new FormControl("",Validators.required),
-    
-    
-    fattoTampone: new FormControl(false) ,
-    tamponePositivo: new FormControl(false) ,
-    famigliareInfetto: new FormControl(false) ,
-    isolamentoDomiciliare: new FormControl(false) ,
-    riceverato: new FormControl(false) ,
-    guarito: new FormControl(false)  
-    
-  });
+  
   
   //Firestore CRUD actions example
   createCoffeeOrder(data) {
@@ -41,9 +27,14 @@ export class OrdersService {
     .set({ completed: true }, { merge: true });
   }
   
-  getCoffeeOrders() {
+  snapshotChanges() {
     return this.firestore.collection("tamponi").snapshotChanges();
   }
+
+  valueChanges() {
+    return this.firestore.collection("tamponi").valueChanges();
+  }
+
   
   deleteCoffeeOrder(data) {
     return this.firestore

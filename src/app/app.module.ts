@@ -19,7 +19,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {MatRadioModule} from '@angular/material/radio';
- 
+import {MatListModule} from '@angular/material/list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -38,6 +40,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatAutocompleteModule,
     MatRadioModule,
     HttpClientModule,
+    MatToolbarModule,
+    MatListModule,
     SweetAlert2Module.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }) 
   ],

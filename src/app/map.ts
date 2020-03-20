@@ -28,3 +28,13 @@ export class FeatureCollection {
   type = 'FeatureCollection'
   constructor(public features: Array<GeoJson>) {}
 }
+
+
+
+export class KeyLabel {
+  key :string;
+  label: string;
+  constructor( key :string, label: string ) {}
+}
+
+
