@@ -1,0 +1,96 @@
+
+
+<form   [formGroup]="this.form"  style=" margin:10px"    >
+    
+    <div fxLayout="column" fxFlex>
+        
+        <mat-form-field fxFlex>
+            <mat-label>Nome Cittadino:</mat-label>
+            <input matInput required placeholder="Nome Cittadino" formControlName="nome">
+        </mat-form-field>
+        
+        
+        <mat-form-field fxFlex>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required  
+            placeholder="Ex. pat@example.com">
+        </mat-form-field>
+        
+        
+        
+        
+        
+        <mat-form-field fxFlex>
+            <mat-label>Eta:</mat-label>
+            <input matInput type="number" required placeholder="Eta" formControlName="eta">
+        </mat-form-field>
+        
+        <div fxFlex>
+            <label>Sesso:</label>
+            
+            <mat-radio-group   required aria-label="Sesso" formControlName="sesso"> 
+                <mat-radio-button value="M">Maschio</mat-radio-button>
+                <mat-radio-button value="F">Femmina</mat-radio-button>
+            </mat-radio-group>
+            
+        </div>
+        
+        
+ 
+
+ 
+        <mat-form-field fxFlex >
+            <mat-label>Dove ti trovi:  </mat-label>
+            <input matInput required
+            placeholder="Ex. Via N, Comune"
+            aria-label="Ex. Via N, Comune"
+            [matAutocomplete]="auto"
+            formControlName="via" 
+            > 
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+            (optionSelected)="onSelectionChanged($event)"  >
+            <mat-option *ngFor="let state of filteredStates | async" [value]="state">
+                <span>{{state.place_name}}</span>  
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>    
+    <div class="map" id="map"></div> 
+     
+    <div fxFlex> 
+        <label>Informazioni:</label>
+        
+        
+        <mat-selection-list   (selectionChange)="selectionChange1( $event )"  >  
+            <mat-list-option  *ngFor="let info of ordersService.dizionarioInformazioni" [value]="info.key" >
+                {{info.label}}
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+    
+    <div fxFlex> 
+        <label>Sintomi:</label>
+        
+        
+        <mat-selection-list   (selectionChange)="selectionChange( $event )"  >  
+            <mat-list-option  *ngFor="let sintomo of ordersService.dizionarioSintomi" [value]="sintomo.key" >
+                {{sintomo.label}}
+            </mat-list-option>
+        </mat-selection-list>
+        
+        
+    </div>
+    <button  style="height: 150px; margin:50px" mat-stroked-button   [disabled]="this.form.status=='INVALID'" (click)="onSubmit()">
+        Submit
+    </button>
+</div>
+</form>
+<swal
+#successSwal
+
+title="Grazie per la tua partecipazione"
+icon="success"
+[showCancelButton]="false"
+[focusCancel]="false"
+>
+</swal>
+

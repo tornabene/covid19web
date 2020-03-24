@@ -14,13 +14,14 @@ export class GeoJson implements IGeoJson {
   type = 'Feature';
   geometry: IGeometry;
   place_name: string;
- 
+  
 
   constructor(coordinates, public properties?) {
     this.geometry = {
       type: 'Point',
       coordinates: coordinates
     }
+    
   }
 }
 
@@ -29,6 +30,13 @@ export class FeatureCollection {
   constructor(public features: Array<GeoJson>) {}
 }
 
+ 
+export class GGeoJson  {
+  long_name:string;
+  short_name:string;
+  types: string;
+}
+ 
 
 
 export class KeyLabel {

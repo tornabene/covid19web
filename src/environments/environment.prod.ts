@@ -15,4 +15,8 @@ mapbox: {
   accessToken:
     'pk.eyJ1IjoidHRvcm5hYmVuZSIsImEiOiJjazd4Nm0zOTkwM3hwM2hzZnZlZ3RhemE3In0.BCYRvz2Pe1HC74gamBma8A',
 },
+googleapis: {
+  apiKey: 'AIzaSyCwKYgp4oBySIAV0UJzLvO28YT2KBiBZrk',
+}
+
 };

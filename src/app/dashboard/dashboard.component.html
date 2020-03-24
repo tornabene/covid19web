@@ -1,0 +1,43 @@
+<div fxFlex fxLayout="column" fxLayoutGap="10px">
+
+    <div class="mapFull" id="mapFull"></div>
+
+    <canvas #valueBarsCanvas></canvas>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Dove ti trovi</th>
+
+                <th>viaLng</th>
+                <th>viaLat</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let order of coffeeOrders">
+                <td>
+                    {{ order.payload.doc.data().nome }}
+                </td>
+
+                <td>{{ order.payload.doc.data().via }}</td>
+
+
+                <td>{{ order.payload.doc.data().viaLng|json }}</td>
+                <td>{{ order.payload.doc.data().viaLat|json }}</td>
+
+
+
+                <td [hidden]="order.payload.doc.data().completed" (click)="markCompleted(order)">
+                    <i class="material-icons">check</i>
+                </td>
+                <td [hidden]="order.payload.doc.data().completed" (click)="deleteOrder(order)">
+                    <i class="material-icons">delete_forever</i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

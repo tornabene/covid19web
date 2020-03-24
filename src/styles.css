@@ -3,3 +3,38 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+
+#mapFull {    
+    width: 99%;
+    height: 500px;
+}
+
+#map {    
+    width: 99%;
+    height: 100px;
+     
+}
+
+.geocoder {
+    position: absolute;
+    z-index: 1;
+    width: 50%;
+    left: 50%;
+    margin-left: -25%;
+    top: 10px;
+}
+
+.mapboxgl-ctrl-geocoder {
+    min-width: 100%;
+}
+
+.example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+
+  
