@@ -66,6 +66,108 @@ export class StockDataService {
 
 
 
+  seriesConfirmed2(limit:number) {
+    let apiURL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
+    var httpOptions = {
+      headers: new HttpHeaders(),
+      'responseType': 'text' as 'json'
+    }
+    return this.httpClient.get<any>(apiURL, httpOptions)
+      .pipe(
+        map(csvData => {
+          let series = this.csvToSeries2(csvData,limit);
+          return series;
+        })
+      );
+  }
+
+
+
+
+  seriesDeaths2(limit:number) {
+    let apiURL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv";
+    var httpOptions = {
+      headers: new HttpHeaders(),
+      'responseType': 'text' as 'json'
+    }
+    return this.httpClient.get<any>(apiURL, httpOptions)
+      .pipe(
+        map(csvData => {
+          let series = this.csvToSeries2(csvData,limit);
+          return series;
+        })
+      );
+  }
+
+
+
+
+
+
+
+
+
+  public csvToSeries2(csv: string,limit:number) {
+    var lines = csv.split("\n");
+    var result = [];
+    var mappa = {};
+
+    var headers = lines[0].split(",");
+    for (var i = 1; i < lines.length; i++) {
+      var currentline = lines[i].split(",");
+      var obj = {};
+      var state = currentline[1];
+      obj["name"] = state;
+      
+      if (mappa[state] == null) {
+        mappa[state] = {};
+      }
+      for (var j = 4; j < headers.length; j++) {
+        obj[headers[j]] = currentline[j];
+        let name = headers[j];
+        let value = new Number(currentline[j]);
+        
+        if (mappa[state][name] == null) {
+          mappa[state][name] = value;
+        } else {
+          mappa[state][name] = mappa[state][name] + value;
+        }
+
+      }
+    }
+
+    
+    let keys: string[] = Object.keys(mappa);
+    keys.forEach(key => {
+      var obj = {};
+      obj["name"] = key;
+      obj["series"] = [];
+
+
+      var lastValue:number=0;
+      let keys2: string[] = Object.keys(mappa[key]);
+      keys2.forEach(key2 => {
+        var obj2 = {};
+        obj2["name"] = new Date(key2);
+        obj2["value"] =  mappa[key][key2] -lastValue;
+        obj["series"].push(obj2);
+       
+        lastValue = mappa[key][key2];
+      })
+
+
+
+      if (lastValue > limit) {
+        result.push(obj);
+      }
+
+    });
+
+    
+    return result;
+  }
+
+
 
 
 

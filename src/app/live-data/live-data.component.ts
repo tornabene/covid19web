@@ -19,8 +19,10 @@ export class LiveDataComponent implements OnInit {
 
   seriesConfirmed: any[];
   seriesDeaths: any[];
- 
-  view: any[] = [    ];
+  seriesConfirmedPlot: any[];
+  seriesDeathsPlot: any[];
+  
+  view: any[] = [ 1300   ];
   showXAxis = true;
   showYAxis = true;
   gradient = false;
@@ -41,13 +43,23 @@ export class LiveDataComponent implements OnInit {
         console.log(seriesConfirmed);
         this.seriesConfirmed = seriesConfirmed;
       });
-
-
     this.stockDataService.seriesDeaths(100)
       .subscribe(seriesDeaths => {
         console.log(seriesDeaths);
         this.seriesDeaths = seriesDeaths;
       });
+
+      this.stockDataService.seriesConfirmed2(4500)
+      .subscribe(seriesConfirmedPlot => {
+        console.log(seriesConfirmedPlot);
+        this.seriesConfirmedPlot = seriesConfirmedPlot;
+      });
+      this.stockDataService.seriesDeaths2(100)
+      .subscribe(seriesDeathsPlot => {
+        console.log(seriesDeathsPlot);
+        this.seriesDeathsPlot = seriesDeathsPlot;
+      }); 
+
 
   }
 

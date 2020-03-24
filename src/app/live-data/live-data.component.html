@@ -1,37 +1,58 @@
-<!-- <div fxFlex fxLayout="row" fxLayoutGap="10px">
-        <ngx-charts-gauge [view]="view" [scheme]="colorScheme" [results]="single" [legend]="legend"
-            [legendPosition]="legendPosition" (select)="onSelect($event)" (activate)="onActivate($event)"
-            (deactivate)="onDeactivate($event)"> </ngx-charts-gauge>
-        <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient"
+<div fxFlex fxLayout="column" fxLayoutGap="10px">
+
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Contagiati</mat-card-title>
+        </mat-card-header>
+        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="seriesConfirmed" [gradient]="gradient"
             [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+            [timeline]="true" [animations]="true" [autoScale]="true" [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+        </ngx-charts-line-chart>
+
+    </mat-card>
+
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Contagiati  Tassi Crescita</mat-card-title>
+        </mat-card-header>
+        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="seriesConfirmedPlot"
+            [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel" [timeline]="true" [animations]="true" [autoScale]="true"
             [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
             (select)="onSelect($event)">
-        </ngx-charts-bar-vertical>
-    </div>  
-    <div fxFlex fxLayout="row" fxLayoutGap="10px">
-        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="multi" (select)="onSelect($event)"
-            (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
-        </ngx-charts-line-chart>  
-    </div> 
-    -->
-<div fxFlex fxLayout="column"  >
-  <div><h3>Contagiati</h3></div>  
-    
-    <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="seriesConfirmed" [gradient]="gradient" [xAxis]="showXAxis"  
-    [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"   [timeline]="true"  [animations]="true"  [autoScale]="true"
-    [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
-    (select)="onSelect($event)">
-</ngx-charts-line-chart>
+        </ngx-charts-line-chart>
 
-<div><h3>Decessi</h3></div>  
-<ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="seriesDeaths" [gradient]="gradient" [xAxis]="showXAxis"
-[yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [timeline]="true"  [animations]="true"  [autoScale]="true"
-[showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
-(select)="onSelect($event)">
-</ngx-charts-line-chart>
+    </mat-card>
 
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Decessi</mat-card-title>
+        </mat-card-header>
+
+        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="seriesDeaths" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+            [timeline]="true" [animations]="true" [autoScale]="true" [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+        </ngx-charts-line-chart>
+
+    </mat-card>
+
+
+
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Decessi  Tassi Crescita</mat-card-title>
+        </mat-card-header>
+        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="seriesDeathsPlot" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+            [timeline]="true" [animations]="true" [autoScale]="true" [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+        </ngx-charts-line-chart>
+    </mat-card>
 
 </div>
-

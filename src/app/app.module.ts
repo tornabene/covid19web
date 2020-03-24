@@ -29,6 +29,9 @@ import { AgmCoreModule } from '@agm/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { StockDataService } from './stock-data.service';
 import { LiveDataComponent } from './live-data/live-data.component';
+import {MatCardModule} from '@angular/material/card';
+ 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +59,7 @@ import { LiveDataComponent } from './live-data/live-data.component';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     AppRoutingModule,
     NgxChartsModule,
+    MatCardModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleapis.apiKey,
       libraries: ['places']
